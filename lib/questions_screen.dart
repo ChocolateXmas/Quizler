@@ -23,7 +23,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(context) {
     // QuizQuestions[Text, List<String>] Object
-    var currentQuestion = questions[currentQuestionIndex];
+    var currentQuestion = Questions().getShuffledList()[currentQuestionIndex];
     return SizedBox(
       width: double.infinity,
       child: Container(
