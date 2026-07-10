@@ -21,18 +21,22 @@ class StartScreen extends StatelessWidget {
             'Flutter Quiz - the fun way!',
             style: TextStyle(
               color: Colors.white,
+              fontFamily: 'Cursive',
               fontSize: 28,
             ),
           ),
-          OutlinedButton.icon(
-            onPressed: () {
-              startQuiz();
-            },
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
+          Container(
+            margin: const EdgeInsets.only(top: 20),
+            child: OutlinedButton.icon(
+              onPressed: () {
+                startQuiz();
+              },
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Colors.white,
+              ),
+              icon: const Icon(Icons.access_time_filled),
+              label: const Text('Lets Start!'),
             ),
-            icon: const Icon(Icons.access_time_filled),
-            label: const Text('Lets Start!'),
           ),
         ],
       ),
