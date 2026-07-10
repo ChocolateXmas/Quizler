@@ -505,9 +505,11 @@ class Questions {
     ),
   ];
 
-  List<QuizQuestions> getShuffledList() {
+  List<QuizQuestions> getShuffledList(int questionsAmount) {
     List<QuizQuestions> newList = List.of(questions);
     newList.shuffle();
-    return newList;
+    return (questionsAmount >= 1 && questionsAmount <= questions.length)
+        ? newList.sublist(0, questionsAmount)
+        : newList;
   }
 }

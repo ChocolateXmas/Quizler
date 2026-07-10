@@ -15,7 +15,18 @@ const String startScreenId = 'start-screen';
 const String questionsScreenId = 'questions-screen';
 
 class _QuizState extends State<Quiz> {
+  final List<String> selectedAnswers = [];
   var activeScreen = startScreenId;
+
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+    if (selectedAnswers.length == questionsAmount) {
+      selectedAnswers.clear();
+      setState(() {
+        activeScreen = startScreenId;
+      });
+    }
+  }
 
   void switchScreen() {
     setState(() {
@@ -27,7 +38,7 @@ class _QuizState extends State<Quiz> {
   Widget build(context) {
     var screenWidget = activeScreen == startScreenId
         ? StartScreen(switchScreen)
-        : const QuestionsScreen();
+        : QuestionsScreen(onSelectAnswer: chooseAnswer);
 
     return MaterialApp(
       home: Scaffold(

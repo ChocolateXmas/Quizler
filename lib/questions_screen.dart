@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:quizler/data/questions.dart';
 import 'package:quizler/answer_button.dart';
 
+const int questionsAmount = 10;
+
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  const QuestionsScreen({super.key, required this.onSelectAnswer});
+
+  final void Function(String answer) onSelectAnswer;
 
   @override
   State<QuestionsScreen> createState() {
@@ -14,7 +18,8 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsScreenState extends State<QuestionsScreen> {
   int currentQuestionIndex = 0;
 
-  void nextQuestion() {
+  void answerQuestion(String answer) {
+    widget.onSelectAnswer(answer);
     setState(() {
       ++currentQuestionIndex;
     });
@@ -23,7 +28,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(context) {
     // QuizQuestions[Text, List<String>] Object
-    var currentQuestion = Questions().getShuffledList()[currentQuestionIndex];
+    var currentQuestion =
+        Questions().getShuffledList(questionsAmount)[currentQuestionIndex];
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -41,8 +47,12 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            ...currentQuestion.getShuffledAnswers().map((item) {
-              return AnswerButton(answerText: item, onTap: nextQuestion);
+            ...currentQuestion.getShuffledAnswers().map((answer) {
+              return AnswerButton(
+                  answerText: answer,
+                  onTap: () {
+                    answerQuestion(answer);
+                  });
             }),
           ],
         ),
