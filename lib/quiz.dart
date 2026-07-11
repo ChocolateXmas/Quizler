@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quizler/models/quiz_questions.dart';
 import 'package:quizler/questions_screen.dart';
 import 'package:quizler/start_screen.dart';
+import 'package:quizler/results_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -13,32 +15,57 @@ class Quiz extends StatefulWidget {
 
 const String startScreenId = 'start-screen';
 const String questionsScreenId = 'questions-screen';
+const String resultsScreenId = 'results-screen';
 
 class _QuizState extends State<Quiz> {
+  final List<QuizQuestions> selectedQuestions = [];
   final List<String> selectedAnswers = [];
   var activeScreen = startScreenId;
+
+  void getQuestion(QuizQuestions question) {
+    selectedQuestions.add(question);
+    // if (selectedQuestions.length == questionsAmount) {
+    //   // selectedQuestions.clear();
+    // }
+  }
 
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
     if (selectedAnswers.length == questionsAmount) {
-      selectedAnswers.clear();
       setState(() {
-        activeScreen = startScreenId;
+        // selectedAnswers.clear();
+        activeScreen = resultsScreenId;
       });
     }
   }
 
-  void switchScreen() {
+  void switchQuizScreen() {
     setState(() {
       activeScreen = questionsScreenId;
     });
   }
 
+  void switchStartScreen() {
+    setState(() {
+      // clear the questions & answers list when starting a new quiz
+      selectedAnswers.clear();
+      selectedQuestions.clear();
+      activeScreen = startScreenId;
+    });
+  }
+
   @override
   Widget build(context) {
-    var screenWidget = activeScreen == startScreenId
-        ? StartScreen(switchScreen)
-        : QuestionsScreen(onSelectAnswer: chooseAnswer);
+    Widget screenWidget = StartScreen(switchQuizScreen);
+    if (activeScreen == questionsScreenId) {
+      screenWidget = QuestionsScreen(
+        onSelectAnswer: chooseAnswer,
+        onViewQuestion: getQuestion,
+      );
+    } else if (activeScreen == resultsScreenId) {
+      screenWidget = ResultsScreen(switchStartScreen,
+          chosenAnswers: selectedAnswers, questions: selectedQuestions);
+    }
 
     return MaterialApp(
       home: Scaffold(

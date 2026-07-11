@@ -1,7 +1,17 @@
 import 'package:quizler/models/quiz_questions.dart';
 
 class Questions {
-  static const questions = [
+  Questions(this.questionsAmount) {
+    questions.clear(); // Clear former values from former quizzes
+    // Add the separated amount shuffled questions back to usable list
+    questions.addAll((List.of(_questionsData)..shuffle())
+        .sublist(0, questionsAmount.clamp(1, _questionsData.length)));
+  }
+
+  final int questionsAmount;
+  final List<QuizQuestions> questions = []; // finalized shuffled questions list
+
+  static const _questionsData = [
     QuizQuestions(
       question: 'What is the root of all things in Flutter?',
       answers: [
@@ -504,12 +514,4 @@ class Questions {
       ],
     ),
   ];
-
-  List<QuizQuestions> getShuffledList(int questionsAmount) {
-    List<QuizQuestions> newList = List.of(questions);
-    newList.shuffle();
-    return (questionsAmount >= 1 && questionsAmount <= questions.length)
-        ? newList.sublist(0, questionsAmount)
-        : newList;
-  }
 }
