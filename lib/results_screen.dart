@@ -3,18 +3,18 @@ import 'package:quizler/models/quiz_questions.dart';
 import 'package:quizler/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen(this.resetScreen,
+  const ResultsScreen(this.switchStartScreen,
       {super.key, required this.chosenAnswers, required this.questions});
 
   final List<String> chosenAnswers;
   final List<QuizQuestions> questions;
-  final void Function() resetScreen;
+  final void Function() switchStartScreen;
 
   List<Map<String, Object>> getSummary() {
-    print('chosenAsn Length: ${chosenAnswers.length}');
+    // print('chosenAsn Length: ${chosenAnswers.length}');
     final List<Map<String, Object>> summary = [];
     for (var i = 0; i < chosenAnswers.length; i++) {
-      print('i: $i');
+      // print('i: $i');
       summary.add({
         'questionIndex': i,
         'question': questions[i].question,
@@ -44,7 +44,7 @@ class ResultsScreen extends StatelessWidget {
             QuestionsSummary(getSummary()),
             const SizedBox(height: 30),
             TextButton(
-              onPressed: resetScreen,
+              onPressed: switchStartScreen,
               child: const Text('Restart Quiz'),
             )
           ],
