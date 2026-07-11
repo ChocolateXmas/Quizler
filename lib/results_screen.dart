@@ -27,11 +27,11 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
-    // check how many correct answers
-    int correctAmount = 0;
-    for (var i = 0; i < questions.length; i++) {
-      if (questions[i].answers[0] == chosenAnswers[i]) correctAmount++;
-    }
+    final List<Map<String, Object>> summaryData = getSummary();
+    final int totalAmount = questions.length;
+    final int correctAmount = summaryData.where((data) {
+      return data['user_answer'] == data['correct_answer'];
+    }).length; // check how many correct answers
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -42,11 +42,11 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You answered $correctAmount/${questions.length} questions!'),
+            Text('You answered $correctAmount/$totalAmount questions!'),
             const SizedBox(height: 30),
             const Text('List of answers:'),
             const SizedBox(height: 30),
-            QuestionsSummary(getSummary()),
+            QuestionsSummary(summaryData),
             const SizedBox(height: 30),
             TextButton(
               onPressed: switchStartScreen,
