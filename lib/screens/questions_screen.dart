@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizler/data/questions.dart';
-import 'package:quizler/answer_button.dart';
+import 'package:quizler/widgets/answer_button.dart';
 import 'package:quizler/models/quiz_questions.dart';
 
 const int questionsAmount = 7;

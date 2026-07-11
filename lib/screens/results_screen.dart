@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizler/models/quiz_questions.dart';
-import 'package:quizler/questions_summary.dart';
+import 'package:quizler/widgets/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen(this.switchStartScreen,
@@ -41,7 +41,6 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              // color: Colors.white,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,

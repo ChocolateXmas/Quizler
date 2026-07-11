@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quizler/models/quiz_questions.dart';
-import 'package:quizler/questions_screen.dart';
-import 'package:quizler/start_screen.dart';
-import 'package:quizler/results_screen.dart';
+import 'package:quizler/screens/questions_screen.dart';
+import 'package:quizler/screens/start_screen.dart';
+import 'package:quizler/screens/results_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
