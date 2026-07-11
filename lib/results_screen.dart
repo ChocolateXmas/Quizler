@@ -27,6 +27,11 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
+    // check how many correct answers
+    int correctAmount = 0;
+    for (var i = 0; i < questions.length; i++) {
+      if (questions[i].answers[0] == chosenAnswers[i]) correctAmount++;
+    }
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -37,7 +42,7 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('You answered X/Y questions!'),
+            Text('You answered $correctAmount/${questions.length} questions!'),
             const SizedBox(height: 30),
             const Text('List of answers:'),
             const SizedBox(height: 30),

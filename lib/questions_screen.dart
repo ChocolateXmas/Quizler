@@ -3,7 +3,7 @@ import 'package:quizler/data/questions.dart';
 import 'package:quizler/answer_button.dart';
 import 'package:quizler/models/quiz_questions.dart';
 
-const int questionsAmount = 10;
+const int questionsAmount = 3;
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen(
