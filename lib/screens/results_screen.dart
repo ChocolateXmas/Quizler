@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizler/models/quiz_questions.dart';
-import 'package:quizler/widgets/questions_summary.dart';
+import 'package:quizler/widgets/summary_widgets/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen(this.switchStartScreen,
