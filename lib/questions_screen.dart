@@ -30,7 +30,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(context) {
     // QuizQuestions[Text, List<String>] Object
-    var currentQuestionList =
+    QuizQuestions currentQuestionList =
         Questions(questionsAmount).questions[currentQuestionIndex];
     return SizedBox(
       width: double.infinity,
