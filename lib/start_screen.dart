@@ -32,7 +32,10 @@ class StartScreen extends StatelessWidget {
                 startQuiz();
               },
               style: OutlinedButton.styleFrom(
+                backgroundColor: Colors.black54,
                 foregroundColor: Colors.white,
+                elevation: 35,
+                padding: const EdgeInsets.all(20),
               ),
               icon: const Icon(Icons.access_time_filled),
               label: const Text('Lets Start!'),

@@ -42,15 +42,44 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-                'You answered $numCorrectAnswers/$numTotalQuestions questions correctly!'),
+            Container(
+              // color: Colors.white,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                color: Colors.black26,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Text(
+                'You answered $numCorrectAnswers/$numTotalQuestions questions correctly!',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 15,
+                ),
+              ),
+            ),
             const SizedBox(height: 30),
-            const Text('List of answers:'),
+            const Text(
+              'List of answers:',
+              style: TextStyle(
+                fontFamily: 'Cursive',
+                fontSize: 25,
+                color: Colors.white,
+              ),
+            ),
             const SizedBox(height: 30),
             QuestionsSummary(summaryData),
             const SizedBox(height: 30),
             TextButton(
               onPressed: switchStartScreen,
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white24,
+                foregroundColor: Colors.white,
+                elevation: 35,
+                padding: const EdgeInsets.all(20),
+              ),
               child: const Text('Restart Quiz'),
             )
           ],
