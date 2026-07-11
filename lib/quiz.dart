@@ -22,18 +22,12 @@ class _QuizState extends State<Quiz> {
   final List<String> selectedAnswers = [];
   var activeScreen = startScreenId;
 
-  void getQuestion(QuizQuestions question) {
-    selectedQuestions.add(question);
-    // if (selectedQuestions.length == questionsAmount) {
-    //   // selectedQuestions.clear();
-    // }
-  }
+  void getQuestion(QuizQuestions question) => selectedQuestions.add(question);
 
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
     if (selectedAnswers.length == questionsAmount) {
       setState(() {
-        // selectedAnswers.clear();
         activeScreen = resultsScreenId;
       });
     }

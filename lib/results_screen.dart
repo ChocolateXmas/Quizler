@@ -11,10 +11,8 @@ class ResultsScreen extends StatelessWidget {
   final void Function() switchStartScreen;
 
   List<Map<String, Object>> getSummary() {
-    // print('chosenAsn Length: ${chosenAnswers.length}');
     final List<Map<String, Object>> summary = [];
     for (var i = 0; i < chosenAnswers.length; i++) {
-      // print('i: $i');
       summary.add({
         'questionIndex': i,
         'question': questions[i].question,

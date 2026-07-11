@@ -5,13 +5,6 @@ class QuestionsSummary extends StatelessWidget {
 
   final List<Map<String, Object>> summaryData;
 
-//   summary.add({
-//   'questionIndex': i,
-//   'question': questions[i].question,
-//   'correct_answer': questions[i].answers[0],
-//   'user_answer': chosenAnswers[i]
-// });
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
